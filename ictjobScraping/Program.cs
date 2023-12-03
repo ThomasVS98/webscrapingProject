@@ -25,7 +25,7 @@ namespace ictjobScraping
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter the job search query: "); // we vragen een zoekterm input om in youtube op te zoeken
+            Console.Write("Enter the job search query: "); // we vragen een zoekterm input om in ictjob op te zoeken
             string jobZoek = Console.ReadLine(); // we slaan deze zoekterm op
 
 

@@ -69,8 +69,8 @@ namespace webscrapingProject
                 {
                     // we slaan de titel, views,uploader en link op door de juiste elementen te vinden
                     var title = videoElementen[i].FindElement(By.CssSelector("#video-title")).Text;
-                    var views = videoElementen[i].FindElement(By.CssSelector(".style-scope.ytd-video-meta-block")).Text;
-                    var uploader = videoElementen[i].FindElement(By.CssSelector(".style-scope.ytd-channel-name")).Text;
+                    var views = videoElementen[i].FindElement(By.CssSelector(".style-scope.ytd-video-meta-block span:first-of-type")).Text;
+                    var uploader = videoElementen[i].FindElement(By.CssSelector(".style-scope.ytd-channel-name yt-formatted-string a")).Text;
                     var link = videoElementen[i].FindElement(By.CssSelector("#video-title")).GetAttribute("href");
 
                     // we printen op onze console deze resultaten af zodat we kunnen zien of we juist bezig zijn
