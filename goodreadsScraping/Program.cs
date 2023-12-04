@@ -36,13 +36,17 @@ namespace goodreadsScraping
                 zoekInput.SendKeys(boekSearch); // we geven daar onze gevraagde input in
                 zoekInput.Submit(); // we klikken enter
 
-                System.Threading.Thread.Sleep(5000); // we wachten 5 seconden zodat de resultaten zichtbaar zijn voor we scrapen                                                    
-              
+                System.Threading.Thread.Sleep(5000); // we wachten 5 seconden zodat de resultaten zichtbaar zijn voor we scrapen
+
+                IWebElement closeModal = driver.FindElement(By.XPath("/html/body/div[3]/div/div/div[1]/button/img")); // we zoeken de knop om de modal te sluiten
+                closeModal.Click(); // we klikken op de sluiten knop zodat de modal sluit
+                System.Threading.Thread.Sleep(5000); // we wachten 5 seconden om zeker te zijn dat de modal gesloten is en we de lijst met boeken krijgen te zien
+
 
                 var bookkList = new List<goodreadsResult>(); // we maken een job lijst aan die we later zullen gebruiken voor het omzetten naar json en csv             
                 var bookElements = driver.FindElements(By.CssSelector("[itemtype='http://schema.org/Book']")); // we zoeken nu de lijst met boek resultaten
 
-                for (int i = 0; i < 3; i++) // voor de eerste 3 boeken printen we de titel,auteur,rating
+                for (int i = 0; i < 5; i++) // voor de eerste 3 boeken printen we de titel,auteur,rating
                 {
                     string title = bookElements[i].FindElement(By.CssSelector(".bookTitle")).Text;
                     string auteur = bookElements[i].FindElement(By.CssSelector(".authorName")).Text;
